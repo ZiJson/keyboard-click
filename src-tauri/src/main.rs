@@ -35,7 +35,7 @@ fn start_listening(window: tauri::Window) {
                     if !pressed_keys.contains(&key) {
                         pressed_keys.insert(key);
                         println!("Key pressed: {:?}", key);
-                        let _ = window.emit("play_key_sound", ());
+                        let _ = window.emit("play_key_sound", (key.to_string(),));
                         last_press_time = now;
                     }
                 }
@@ -54,6 +54,7 @@ fn stop_listening() {
 
 fn main() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_opener::init())
         .invoke_handler(tauri::generate_handler![start_listening, stop_listening])
         .run(tauri::generate_context!())
         .expect("error while running Tauri application");

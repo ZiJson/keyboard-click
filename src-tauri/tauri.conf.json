@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "keyboard-click",
+  "productName": "KeyPong",
   "version": "0.1.0",
-  "identifier": "com.keyboard-click.app",
+  "identifier": "com.keypong.app",
   "build": {
     "beforeDevCommand": "yarn dev",
     "devUrl": "http://localhost:1420",
@@ -12,17 +12,34 @@
   "app": {
     "windows": [
       {
-        "title": "keyboard-click",
+        "title": "KeyPong",
         "width": 600,
-        "height": 400,
+        "height": 460,
         "visible": true,
-        "decorations": true,
+        "decorations": false,
         "focus": true,
         "resizable": false
       }
     ],
     "security": {
-      "csp": null
+      "csp": null,
+      "capabilities": [
+        {
+          "identifier": "KeyPong",
+          "description": "My application capability used for all windows",
+          "windows": ["main"],
+          "permissions": [
+            "core:window:default",
+            "core:window:allow-start-dragging",
+            "core:event:allow-listen",
+            "core:event:default",
+            "core:window:allow-minimize",
+            "core:window:allow-close",
+            "opener:allow-open-url",
+            "opener:default"
+          ]
+        }
+      ]
     }
   },
 
