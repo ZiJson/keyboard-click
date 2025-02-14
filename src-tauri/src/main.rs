@@ -3,13 +3,12 @@
     windows_subsystem = "windows"
 )]
 use device_query::{DeviceQuery, DeviceState, Keycode};
+use std::collections::HashSet;
 use std::{
-    time::{Duration, Instant}, 
-    sync::atomic::{AtomicBool, Ordering} // 修正這裡
+    sync::atomic::{AtomicBool, Ordering}, // 修正這裡
+    time::{Duration, Instant},
 };
 use tauri::{Emitter};
-use std::collections::HashSet;
-
 
 // Global flag to control the listening thread
 static LISTENING: AtomicBool = AtomicBool::new(false);
@@ -46,14 +45,15 @@ fn start_listening(window: tauri::Window) {
     });
 }
 
-
 #[tauri::command]
 fn stop_listening() {
     LISTENING.store(false, Ordering::SeqCst);
 }
 
+
 fn main() {
     tauri::Builder::default()
+        .plugin(tauri_plugin_fs::init())
         .plugin(tauri_plugin_opener::init())
         .invoke_handler(tauri::generate_handler![start_listening, stop_listening])
         .run(tauri::generate_context!())

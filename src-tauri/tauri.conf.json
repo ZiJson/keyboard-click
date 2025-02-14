@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
   "productName": "KeyPong",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "identifier": "com.keypong.app",
   "build": {
     "beforeDevCommand": "yarn dev",
@@ -18,34 +18,19 @@
         "visible": true,
         "decorations": false,
         "focus": true,
-        "resizable": false
+        "resizable": false,
+        "devtools": true
       }
     ],
     "security": {
-      "csp": null,
-      "capabilities": [
-        {
-          "identifier": "KeyPong",
-          "description": "My application capability used for all windows",
-          "windows": ["main"],
-          "permissions": [
-            "core:window:default",
-            "core:window:allow-start-dragging",
-            "core:event:allow-listen",
-            "core:event:default",
-            "core:window:allow-minimize",
-            "core:window:allow-close",
-            "opener:allow-open-url",
-            "opener:default"
-          ]
-        }
-      ]
+      "csp": null
     }
   },
 
   "bundle": {
     "active": true,
     "targets": "all",
+    "resources": ["resources/**/*"],
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",

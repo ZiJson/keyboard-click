@@ -1,7 +1,7 @@
 {
   "name": "keypong",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,9 +11,14 @@
     "build:win": "tauri build --runner cargo-xwin --target x86_64-pc-windows-msvc"
   },
   "dependencies": {
+    "@esbuild/linux-x64": "^0.25.0",
+    "@radix-ui/react-select": "^2.1.6",
     "@radix-ui/react-slot": "^1.1.2",
+    "@rollup/rollup-linux-x64-gnu": "^4.34.6",
     "@tailwindcss/vite": "^4.0.5",
     "@tauri-apps/api": "^2.2.0",
+    "@tauri-apps/cli-linux-x64-gnu": "^2.2.7",
+    "@tauri-apps/plugin-fs": "^2.2.0",
     "@tauri-apps/plugin-opener": "^2.2.5",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
